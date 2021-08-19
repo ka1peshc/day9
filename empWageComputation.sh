@@ -2,17 +2,17 @@ WageperHour=20
 totalSalary=0
 pay=0
 empAttendence=$((RANDOM%3))
-if [ $empAttendence -eq 0 ]
-then
-    echo "Present"
+case $empAttendence in
+    0)
     pay=$(($WageperHour * 8))
-elif [ $empAttendence -eq 1 ]
-then
-    echo "Part time"
+    echo "Full day";;
+    1)
     pay=$(($WageperHour * 4))
-else
-    echo "Absent"
+    echo "Part time";;
+    2)
     pay=0
-fi
+    echo "Absent";;
+esac
+
 totalSalary=$(($totalSalary+$pay))
 echo "$totalSalary"
